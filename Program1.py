@@ -13,9 +13,18 @@ import random
 def ask3Num():
     while True:
         try: 
-            num1 = int(input("Enter first number: "))
-            num2 = int(input("Enter second number: "))
-            num3 = int(input("Enter third number: "))
+            num1 = int(input("Enter first number (0-9): "))
+            if num1 not in range(0,9):
+                print("Invalid. Input is out of range (0-9)") 
+                continue
+            num2 = int(input("Enter second number (0-9): "))
+            if num2 not in range(0,9):
+                print("Invalid. Input is out of range (0-9)") 
+                continue
+            num3 = int(input("Enter third number (0-9): "))
+            if num3 not in range(0,9):
+                print("Invalid. Input is out of range (0-9)") 
+                continue
         except ValueError:
             print("Invalid. Please enter a number.")
             continue
@@ -39,6 +48,7 @@ def checkWinLose(list1, list2):
 
 # initiates the game 
 def play():
+    # program intro
     print("Welcome to the Lottery!")
     print("-----------------------------")
     # asks user 3 numbers and generates 3 winning numbers
@@ -68,7 +78,7 @@ def playAgain():
         else:
             print("\n")
             print("Please enter y if you want to play again, or enter n to exit the game.")
+
 # main
 play()
 playAgain()
-
