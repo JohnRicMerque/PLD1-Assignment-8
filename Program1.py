@@ -9,11 +9,18 @@
 
 import random
 
-# asks user for three numbers
+# asks user for three numbers and validates input
 def ask3Num():
-    num1 = int(input("Enter first number: "))
-    num2 = int(input("Enter second number: "))
-    num3 = int(input("Enter third number: "))
+    while True:
+        try: 
+            num1 = int(input("Enter first number: "))
+            num2 = int(input("Enter second number: "))
+            num3 = int(input("Enter third number: "))
+        except ValueError:
+            print("Invalid. Please enter a number.")
+            continue
+        else:
+            break
     uList = [num1, num2, num3]
     return uList
 
@@ -32,8 +39,7 @@ def checkWinLose(list1, list2):
 
 # initiates the game 
 def play():
-    print("-----------------------------")
-    print("Welcome to the Lottery")
+    print("Welcome to the Lottery!")
     print("-----------------------------")
     # asks user 3 numbers and generates 3 winning numbers
     inputNums = ask3Num()
@@ -53,6 +59,7 @@ def playAgain():
         yn = input("Try again? y/n: ")
         yn = yn.lower()
         if yn == 'y':
+            print("\n")
             play()
         elif yn == 'n':
             print("-----------------------------")
@@ -60,7 +67,7 @@ def playAgain():
             break
         else:
             print("\n")
-            print("Please enter y if you want to play again, enter n to exit the game.")
+            print("Please enter y if you want to play again, or enter n to exit the game.")
 # main
 play()
 playAgain()
