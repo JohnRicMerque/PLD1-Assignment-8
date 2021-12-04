@@ -9,19 +9,33 @@
 
 import random
 
+# asks user for three numbers
 def ask3Num():
     num1 = int(input("Enter first number: "))
     num2 = int(input("Enter second number: "))
     num3 = int(input("Enter third number: "))
-    return num1, num2, num3
+    return [num1, num2, num3]
 
+# generates three random winning numbers
 def get3WinningNum():
     numW1 = random.randint(0,9)
     numW2 = random.randint(0,9)
     numW3 = random.randint(0,9)
-    return numW1, numW2, numW3
+    return [numW1, numW2, numW3]
 
-nums = ask3Num()
+# checks
+def checkWinLose(list1, list2):
+    if all(elem in list1 for elem in list2):
+        print("Winner!")
+    else: 
+        print("You loss!")
+
+# main
+inputNums = ask3Num()
 winningNums = get3WinningNum()
-print(f"nums: {nums}\nwinningnumbers: {winningNums}")
 
+# dislay user input and winning numbers 
+print(f"Your guesses: {inputNums}\nWinningnumbers: {winningNums}")
+
+# declare win or lose
+checkWinLose(inputNums, winningNums)
