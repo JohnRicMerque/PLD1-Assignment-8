@@ -14,28 +14,40 @@ def ask3Num():
     num1 = int(input("Enter first number: "))
     num2 = int(input("Enter second number: "))
     num3 = int(input("Enter third number: "))
-    return [num1, num2, num3]
+    uList = [num1, num2, num3]
+    return uList
 
 # generates three random winning numbers
 def get3WinningNum():
-    numW1 = random.randint(0,9)
-    numW2 = random.randint(0,9)
-    numW3 = random.randint(0,9)
-    return [numW1, numW2, numW3]
+    numW1, numW2, numW3 = random.sample(range(0, 9), 3)
+    wList = [numW1, numW2, numW3]
+    return wList
 
 # checks
 def checkWinLose(list1, list2):
-    if all(elem in list1 for elem in list2):
+    if sorted(list1) == sorted(list2):
         print("Winner!")
     else: 
         print("You loss!")
 
+# initiates the game 
+def play():
+    inputNums = ask3Num()
+    winningNums = get3WinningNum()
+    # dislay user input and winning numbers 
+    print(f"Your guesses: {inputNums}\nWinning numbers: {winningNums}")
+    # declare win or lose
+    checkWinLose(inputNums, winningNums)
+
 # main
-inputNums = ask3Num()
-winningNums = get3WinningNum()
-
-# dislay user input and winning numbers 
-print(f"Your guesses: {inputNums}\nWinningnumbers: {winningNums}")
-
-# declare win or lose
-checkWinLose(inputNums, winningNums)
+play()
+# asks user to play again
+while True:
+    yn = input("Try again? y/n: ")
+    if yn == 'y':
+        play()
+    elif yn == 'n':
+        print("Bye player!")
+        break
+    else:
+        print("Please enter y/n only. \nEnter y if you want to play again, n if no.")
