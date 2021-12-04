@@ -32,22 +32,36 @@ def checkWinLose(list1, list2):
 
 # initiates the game 
 def play():
+    print("-----------------------------")
+    print("Welcome to the Lottery")
+    print("-----------------------------")
+    # asks user 3 numbers and generates 3 winning numbers
     inputNums = ask3Num()
     winningNums = get3WinningNum()
-    # dislay user input and winning numbers 
+    # dislay user input and winning numbers
+    print("-----------------------------") 
     print(f"Your guesses: {inputNums}\nWinning numbers: {winningNums}")
     # declare win or lose
+    print("-----------------------------") 
+    print("RESULT") 
     checkWinLose(inputNums, winningNums)
+    print("-----------------------------")
 
+# asks user to play again
+def playAgain():
+    while True:
+        yn = input("Try again? y/n: ")
+        yn = yn.lower()
+        if yn == 'y':
+            play()
+        elif yn == 'n':
+            print("-----------------------------")
+            print("Bye player!")
+            break
+        else:
+            print("\n")
+            print("Please enter y if you want to play again, enter n to exit the game.")
 # main
 play()
-# asks user to play again
-while True:
-    yn = input("Try again? y/n: ")
-    if yn == 'y':
-        play()
-    elif yn == 'n':
-        print("Bye player!")
-        break
-    else:
-        print("Please enter y/n only. \nEnter y if you want to play again, n if no.")
+playAgain()
+
