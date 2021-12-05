@@ -18,7 +18,8 @@ def checkNumber(guessNum, winningNum):
         print("Greater than")
     elif guessNum < winningNum:
         print("Less than")
-    else:
+    elif guessNum == winningNum:
+        print("-----------------------------------------------")
         print("Congratulations! You guessed the number!")
 
 # initiates the guessing game
@@ -28,10 +29,11 @@ def play(winningNum):
         guessNum = getUserGuess()
         checkNumber(guessNum, winningNum)
         continue
+    print(f"[secret number: {winningNum}]")
 
 # main
 # game intro
-print("Hello user! Can u guess the secret number?")
+print("Hello user! Can u guess the number?")
 print("-----------------------------------------------")
 
 # generates random num
