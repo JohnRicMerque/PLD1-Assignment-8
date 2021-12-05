@@ -11,10 +11,13 @@ import random
 randNum = random.randint(0,100)
 
 # asks user guess
-userNum = int(input("Guess the number. Enter here: "))
+def getUserGuess():
+    userNum = int(input("Guess the number. Enter here: "))
+    return userNum
 
 # checks if number is less than or greater than
-if userNum > randNum:
-    print("Greater than")
-else:
-    print("Less than")
+def checkNumber(guessNum, winningNum):
+    if guessNum > winningNum:
+        print("Greater than")
+    else:
+        print("Less than")
