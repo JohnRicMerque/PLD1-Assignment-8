@@ -7,9 +7,16 @@
 
 import random
 
-# asks user guess
+# asks user guess and validates it
 def getUserGuess():
-    userNum = int(input("Enter guess: "))
+    while True:
+        try: 
+            userNum = int(input("Enter guess: "))
+        except ValueError:
+            print("Invalid. Please enter a number")
+            continue
+        else:
+            break
     return userNum
 
 # checks if input number is less than or greater than random number
