@@ -12,7 +12,7 @@ def getUserGuess():
     userNum = int(input("Enter guess: "))
     return userNum
 
-# checks if number is less than or greater than
+# checks if input number is less than or greater than random number
 def checkNumber(guessNum, winningNum):
     if guessNum > winningNum:
         print("Greater than")
@@ -22,7 +22,7 @@ def checkNumber(guessNum, winningNum):
         print("-----------------------------------------------")
         print("Congratulations! You guessed the number!")
 
-# initiates the guessing game
+# runs the guessing game
 def play(winningNum):
     guessNum = ("")
     while guessNum != winningNum:
@@ -30,13 +30,33 @@ def play(winningNum):
         checkNumber(guessNum, winningNum)
         continue
     print(f"[secret number: {winningNum}]")
+    print("\n")
 
+# initiates start of game
+def start():
+    # game intro
+    print("-----------------------------------------------")
+    print("Hello user! Can u guess the number?")
+    print("-----------------------------------------------")
+    # generates random num
+    randNum = random.randint(0,100)
+    play(randNum)
+
+# play again
+def playAgain():
+    while True:
+        yn = input("Play again? y/n: ")
+        yn = yn.lower()
+        if yn == 'y':
+            print("\n")
+            start()
+        elif yn == 'n':
+            print("-----------------------------------------------")
+            print("Bye player!")
+            break
+        else:
+            print("Please enter y if you want to play again, or enter n to exit the game.")
+            print("\n")
 # main
-# game intro
-print("Hello user! Can u guess the number?")
-print("-----------------------------------------------")
-
-# generates random num
-randNum = random.randint(0,100)
-play(randNum)
-
+start()
+playAgain()
