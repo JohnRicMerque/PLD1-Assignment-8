@@ -7,17 +7,34 @@
 
 import random
 
-# generates random num
-randNum = random.randint(0,100)
-
 # asks user guess
 def getUserGuess():
-    userNum = int(input("Guess the number. Enter here: "))
+    userNum = int(input("Enter guess: "))
     return userNum
 
 # checks if number is less than or greater than
 def checkNumber(guessNum, winningNum):
     if guessNum > winningNum:
         print("Greater than")
-    else:
+    elif guessNum < winningNum:
         print("Less than")
+    else:
+        print("Congratulations! You guessed the number!")
+
+# initiates the guessing game
+def play(winningNum):
+    guessNum = ("")
+    while guessNum != winningNum:
+        guessNum = getUserGuess()
+        checkNumber(guessNum, winningNum)
+        continue
+
+# main
+# game intro
+print("Hello user! Can u guess the secret number?")
+print("-----------------------------------------------")
+
+# generates random num
+randNum = random.randint(0,100)
+play(randNum)
+
